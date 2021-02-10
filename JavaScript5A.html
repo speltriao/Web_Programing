@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <header>
+        <h1>Alunos</h1>
+    </header>
+    <body>
+        <div>
+            <label for="name">Nome do aluno:</label>
+            <input type="text" name="nome" id="nome">
+            <label for="matricula">Matrícula do aluno:</label>
+            <input type="text" name="matricula" id="matricula">
+            <label for="curso">Curso do aluno:</label>
+            <input type="text" name="curso" id="curso">
+            <button onclick="cadastrar()">Cadastrar!</button>
+        </div>
+        <div>
+            <p>Lista de alunos:</p>
+            <p id="mensagem"></p>
+            <table id="tabela">
+                <th >Nome</th>
+                <th>Matricula</th>
+                <th>Curso</th>
+                
+            </table>
+
+        </div>
+    </body>
+</html>
+<style>
+*{
+    background-color: seashell;
+
+}
+h1{
+    background-color: chartreuse;
+    
+}
+table{
+    border:1px solid black;
+}
+table th{
+    background-color: aqua;
+
+}
+table td{
+    border:1px solid black;
+}
+</style>
+<script>
+    function cadastrar()
+    {
+        var aluno={
+            nome:document.getElementById("nome").value,
+            matricula:document.getElementById("matricula").value,
+            curso:document.getElementById("curso").value,
+        };
+
+        document.getElementById("mensagem").innerHTML="";
+
+        if((aluno.nome=="")||(aluno.matricula=="")||(aluno.curso==""))
+        {
+            let texto="Preencha todos os dados!"
+            document.getElementById("mensagem").innerHTML=texto.fontcolor("red");  
+            return false;
+        }
+        
+        var tabela=document.getElementById("tabela");
+
+        var linha= tabela.insertRow(1);
+        var name=linha.insertCell(0);
+        var matricla=linha.insertCell(1);
+        var course=linha.insertCell(2);
+
+        name.innerHTML= aluno.nome;
+        matricla.innerHTML=aluno.matricula;
+        course.innerHTML=aluno.curso;
+
+    }
+</script>

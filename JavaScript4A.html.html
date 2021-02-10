@@ -1,0 +1,163 @@
+<!--Aluno: Alexandre Casella Speltri 19211986-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+		<title>Avaliação 4A</title>
+    </head>
+    <header>
+        <h1>Acerte o número!</h1>
+    </header>
+    <body>
+        
+        <div id="quadrado1">
+            <div id="texto">
+                <p>Clique em jogar e digite um número de 0 a 10. Você tem 3 tentativas</p>
+                <label id="label" >Digite o número:</label>
+                <input id="entrada" type="number" min="0" max="10" value="0">
+                
+            </div>
+            <div id="quadrado2">
+                <p><cite><b>TENTATIVAS:</b></cite></p>
+                <br>
+                <div id="indicador0">
+                    <p><b>1</b></p>
+                </div>
+                <div id="indicador1">
+                    <p><b>2</b></p>
+                </div>
+                <div id="indicador2">
+                    <p><b>3</b></p>
+                </div>
+           
+            </div>
+            <div id="quadrado2">
+                <div id="apagar">
+                    <button id="botao_apagar" onclick="apagar()"><b>Apagar os números</b></button>
+                </div>
+                <div id="jogar">
+                    <button id="botao_jogar" onclick="jogar()"><b>JOGAR!!!</b></button>
+                </div>
+            </div>
+        </div>
+    </body>
+<script>
+    
+    var i=0;
+
+    function aleatorio(){
+        n=Math.random()
+        n=n*10;
+        n=Math.round(n);
+        return(n);
+    }
+   var erros;
+    function jogar()
+    {
+
+        if (i==0){
+            var n=aleatorio();
+            erros=0;
+        }
+        var entrada=document.getElementById("entrada").value;
+        
+        if (entrada==null)
+        {
+            alert("Digite um numero!");
+
+        }
+        if (entrada==n)
+        {
+            alert("Você venceu!");
+           document.getElementById("indicador"+i).style.backgroundColor="green";
+
+        }
+        else
+        {
+            erros+=1;
+            document.getElementById("indicador"+i).style.backgroundColor="red";
+            alert("Errou!");
+        }
+        if (erros==3)
+        {
+            alert("Fim De Jogo!");
+        }
+        i+=1;
+    }
+
+    function apagar(){
+        i=0;
+        for(let j=0;j<=3;j++){
+            document.getElementById("indicador"+j).style.backgroundColor="lightskyblue";
+        }
+    }
+
+
+</script>
+<style>
+    h1{
+        background-color: mediumspringgreen;
+        width: 400px;
+    }
+    #quadrado1{
+        border:1px solid blue;
+        width: 400px;
+    
+        
+    }
+    #quadrado2{
+        border:1px solid blue;
+        display: flex;
+        width: 400px;
+    }
+
+    #indicador0{
+        border: 1px solid blue;
+        background-color: lightskyblue;
+        width: 30px;
+        padding:20px;
+        margin:10px;
+        
+    }
+    #indicador1{
+        border: 1px solid blue;
+        background-color: lightskyblue;
+        width: 30px;
+        padding:20px;
+        margin:10px;
+        
+    }
+    #indicador2{
+        border: 1px solid blue;
+        background-color: lightskyblue;
+        width: 30px;
+        padding:20px;
+        margin:10px;
+    }
+    #apagar{
+
+
+        width: 155px;
+        padding-left: 10px;
+        margin:10px;
+    }
+    #jogar{
+   
+        
+        width: 155px;
+        padding-left: 10px;
+        margin:10px;
+    
+    }
+    #botao_jogar{
+        background-color: salmon;
+    }
+    #botao_apagar{
+        background-color: silver;
+    }
+    body{
+        background-color: linen;
+    }
+
+</style>
+</html>
